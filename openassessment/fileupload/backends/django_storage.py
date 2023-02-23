@@ -34,6 +34,7 @@ class Backend(BaseBackend):
 
             # Return a fully-qualified URL
             lms_url = getattr(settings, 'LMS_ROOT_URL', '')
+            lms_url = lms_url.replace("http://", "https://") # Force HTTPS
             return urljoin(lms_url, storage_path)
         return None
 

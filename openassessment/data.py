@@ -580,6 +580,7 @@ class OraAggregateData:
         file_links = ''
         sep = "\n"
         base_url = getattr(settings, 'LMS_ROOT_URL', '')
+        base_url = base_url.replace("http://", "https://") # Force HTTPS
 
         from openassessment.xblock.openassessmentblock import OpenAssessmentBlock
         file_downloads = OpenAssessmentBlock.get_download_urls_from_submission(submission)
