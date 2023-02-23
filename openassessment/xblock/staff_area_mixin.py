@@ -162,7 +162,7 @@ class StaffAreaMixin:
         # Add studio URL to link to edit view. We actually want to direct to the vertical instead of the ORA like below:
         # http://<studio-url>/container/block-v1:<course-id>+type@vertical+block@<block-id>
         url = '{protocol}://{studio_url}/container/{vertical_location}'.format(
-            protocol='http' if getattr(settings, 'HTTPS', 'on') == 'off' else 'https',
+            protocol='https' if getattr(settings, 'HTTPS', 'on') == 'off' else 'https',
             studio_url=getattr(settings, 'CMS_BASE', ''),
             vertical_location=str(self.parent)
         )
