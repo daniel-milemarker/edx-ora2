@@ -38,6 +38,7 @@ class LoadStatic:
         root_url, base_url = '', '/static/dist/'
         if hasattr(settings, 'LMS_ROOT_URL'):
             root_url = settings.LMS_ROOT_URL
+            root_url = root_url.replace("http://", "https://") # Force HTTPS
         else:
             logger.error('LMS_ROOT_URL is undefined')
 
@@ -48,6 +49,7 @@ class LoadStatic:
         except OSError:
             logger.error('Cannot find static/dist/manifest.json')
         finally:
+            root_url = root_url.replace("http://", "https://") # Force HTTPS
             LoadStatic._base_url = urljoin(root_url, base_url)
 
     @staticmethod
