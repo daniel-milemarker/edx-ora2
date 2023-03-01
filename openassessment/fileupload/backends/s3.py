@@ -81,6 +81,7 @@ def _connect_to_s3():
         aws_access_key_id=aws_access_key_id,
         aws_secret_access_key=aws_secret_access_key,
         endpoint_url=endpoint_url,
+        config=botocore.client.Config(signature_version='s3v4')
     )
 
 
