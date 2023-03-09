@@ -8,6 +8,8 @@ from django.conf import settings
 import botocore
 import boto3
 
+from botocore.client import Config
+
 from ..exceptions import FileUploadInternalError
 from .base import BaseBackend
 
@@ -81,6 +83,7 @@ def _connect_to_s3():
         aws_access_key_id=aws_access_key_id,
         aws_secret_access_key=aws_secret_access_key,
         endpoint_url=endpoint_url,
+        config=Config(signature_version='s3v4')
     )
 
 
