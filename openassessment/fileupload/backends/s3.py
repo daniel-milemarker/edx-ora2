@@ -82,7 +82,7 @@ def _connect_to_s3():
         "s3",
         aws_access_key_id=aws_access_key_id,
         aws_secret_access_key=aws_secret_access_key,
-        endpoint_url="yamedu-global-dev-storage.s3.amazonaws.com",
+        endpoint_url="https://yamedu-global-dev-storage.s3.amazonaws.com",
         config=Config(signature_version='s3v4')
     )
 
