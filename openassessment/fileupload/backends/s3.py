@@ -77,13 +77,18 @@ def _connect_to_s3():
     aws_access_key_id = getattr(settings, "AWS_ACCESS_KEY_ID", None)
     aws_secret_access_key = getattr(settings, "AWS_SECRET_ACCESS_KEY", None)
     endpoint_url = getattr(settings, "AWS_S3_ENDPOINT_URL", None)
+    signature_version = getattr(settings, "AWS_S3_SIGNATURE_VERSION ", None)
+    region_name = getattr(settings, "AWS_S3_REGION_NAME", None)
 
     return boto3.client(
         "s3",
         aws_access_key_id=aws_access_key_id,
         aws_secret_access_key=aws_secret_access_key,
-        endpoint_url="https://yamedu-global-dev-storage.s3.amazonaws.com",
-        config=Config(signature_version='s3v4', region_name='us-east-2')
+        endpoint_url=endpoint_url,
+        config=Config(
+            signature_version=signature_version, 
+            region_name=region_name
+            )
     )
 
 
